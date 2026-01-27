@@ -1,8 +1,8 @@
 import { PlatformType } from '@lvce-editor/constants'
 import { VError } from '@lvce-editor/verror'
 import * as ElectronWindow from '../ElectronWindow/ElectronWindow.ts'
-import * as OpenExternal from '../OpenExternal/OpenExternal.js'
-import * as Platform from '../Platform/Platform.js'
+import * as OpenExternal from '../OpenExternal/OpenExternal.ts'
+import * as Platform from '../Platform/Platform.ts'
 import * as RendererProcess from '../RendererProcess/RendererProcess.ts'
 
 const openUrlWeb = async (url: string): Promise<void> => {
@@ -19,7 +19,7 @@ const openUrlElectron = async (url: string): Promise<void> => {
 
 // TODO add required platform argument
 export const openUrl = async (url: string): Promise<void> => {
-  switch (Platform.getPlatform()) {
+  switch (Platform.platform) {
     case PlatformType.Electron:
       return openUrlElectron(url)
     default:
