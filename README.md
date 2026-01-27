@@ -1,4 +1,4 @@
-# Menu Worker
+# Opener Worker
 
 Webworker for the menu functionality in LVCE Editor.
 

@@ -1,7 +1,7 @@
 {
   "name": "@lvce-editor/opener-worker",
   "version": "0.0.0-dev",
-  "description": "Menu Worker",
+  "description": "Opener Worker",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/lvce-editor/opener-worker.git"
