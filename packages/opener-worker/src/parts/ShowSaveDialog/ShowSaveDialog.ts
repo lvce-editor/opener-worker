@@ -20,5 +20,5 @@ export const showSaveDialog = async (title: string, properties: readonly string[
   }
   // TODO when running in web, maybe only make a prompt and ask for a filename
   // and the use the workspace path as directory
-  return RendererWorker.invoke('ConfirmPompt.prompt', title)
+  return RendererWorker.invoke('ConfirmPrompt.prompt', title)
 }
