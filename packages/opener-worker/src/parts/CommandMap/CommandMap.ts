@@ -10,6 +10,6 @@ export const commandMap = {
   'Open.openUrl': openUrl,
   'Open.readOpenedUrl': readOpenedMemory,
   'Open.showSaveDialog': showSaveDialog,
-  'ShowSaveDialog.registerSaveDialogMock': registerSaveDialogMock,
   'ShowSaveDialog.clearSaveDialogMock': clearSaveDialogMock,
+  'ShowSaveDialog.registerSaveDialogMock': registerSaveDialogMock,
 }
