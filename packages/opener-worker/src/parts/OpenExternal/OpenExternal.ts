@@ -1,5 +1,5 @@
+import { SharedProcess } from '@lvce-editor/rpc-registry'
 import { get, writeUrl } from '../OpenerState/OpenerState.ts'
-import * as SharedProcess from '../SharedProcess/SharedProcess.ts'
 
 export const showItemInFolder = async (fullPath: string): Promise<void> => {
   if (get()) {
