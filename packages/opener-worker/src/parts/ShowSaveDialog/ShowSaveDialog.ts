@@ -11,7 +11,12 @@ export const clearSaveDialogMock = (): void => {
   saveDialogMockReturnValue = null
 }
 
-export const showSaveDialog = async (title: string, properties: readonly string[], platform: number): Promise<any> => {
+interface ShowSaveDialogResult {
+  readonly canceled: boolean
+  readonly filePath?: string
+}
+
+export const showSaveDialog = async (title: string, properties: readonly string[], platform: number): Promise<ShowSaveDialogResult> => {
   if (saveDialogMockReturnValue !== null) {
     return saveDialogMockReturnValue
   }
@@ -20,5 +25,9 @@ export const showSaveDialog = async (title: string, properties: readonly string[
   }
   // TODO when running in web, maybe only make a prompt and ask for a filename
   // and the use the workspace path as directory
-  return RendererWorker.invoke('Prompt.prompt', title)
+  const filePath = await RendererWorker.invoke('Prompt.prompt', title)
+  return {
+    canceled: !filePath,
+    filePath,
+  }
 }
