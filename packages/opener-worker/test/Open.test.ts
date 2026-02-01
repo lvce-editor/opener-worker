@@ -1,6 +1,6 @@
 import { expect, test, beforeEach } from '@jest/globals'
-import * as OpenExternal from '../src/parts/OpenExternal/OpenExternal.ts'
 import * as OpenerState from '../src/parts/OpenerState/OpenerState.ts'
+import * as OpenExternal from '../src/parts/OpenExternal/OpenExternal.ts'
 
 beforeEach(() => {
   OpenerState.set(false)
@@ -42,13 +42,8 @@ test('showItemInFolder - should handle file paths', async () => {
 
 test('openExternal - should handle various URL formats', async () => {
   OpenerState.set(true)
-  const testUrls = [
-    'https://github.com',
-    'http://localhost:3000',
-    'file:///path/to/file',
-    'mailto:test@example.com',
-  ]
-  
+  const testUrls = ['https://github.com', 'http://localhost:3000', 'file:///path/to/file', 'mailto:test@example.com']
+
   for (const url of testUrls) {
     OpenerState.writeUrl('')
     await OpenExternal.openExternal(url)
