@@ -1,3 +1,5 @@
+import { SharedProcess } from '@lvce-editor/rpc-registry'
+
 export const openNew = async (url: string): Promise<void> => {
-  // TODO
+  await SharedProcess.invoke('OpenExternal.openExternal', url)
 }
