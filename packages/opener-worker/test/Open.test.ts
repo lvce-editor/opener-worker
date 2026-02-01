@@ -1,10 +1,12 @@
 import { expect, test, beforeEach } from '@jest/globals'
+import { SharedProcess } from '@lvce-editor/rpc-registry'
 import * as OpenerState from '../src/parts/OpenerState/OpenerState.ts'
 import * as OpenExternal from '../src/parts/OpenExternal/OpenExternal.ts'
 
 beforeEach(() => {
   OpenerState.set(false)
   OpenerState.writeUrl('')
+  SharedProcess.registerMockRpc({})
 })
 
 test('showItemInFolder - when OpenerState is enabled, should write URL instead of invoking SharedProcess', async () => {
