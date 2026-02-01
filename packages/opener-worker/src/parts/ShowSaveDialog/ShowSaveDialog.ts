@@ -14,5 +14,7 @@ export const showSaveDialog = (title: string, properties: readonly string[]): Pr
   if (saveDialogMockReturnValue !== null) {
     return Promise.resolve(saveDialogMockReturnValue)
   }
+  // TODO when running in web, maybe only make a prompt and ask for a filename
+  // and the use the workspace path as directory
   return SharedProcess.invoke('ElectronDialog.showSaveDialog', title, properties)
 }
