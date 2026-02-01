@@ -1,5 +1,6 @@
 import { PlatformType } from '@lvce-editor/constants'
 import { RendererWorker, SharedProcess } from '@lvce-editor/rpc-registry'
+import { getWorkspaceUri } from '../GetWorkspaceUri/GetWorkspaceUri.js'
 
 let saveDialogMockReturnValue: any = null
 
@@ -23,11 +24,17 @@ export const showSaveDialog = async (title: string, properties: readonly string[
   if (platform === PlatformType.Electron) {
     return SharedProcess.invoke('ElectronDialog.showSaveDialog', title, properties)
   }
-  // TODO when running in web, maybe only make a prompt and ask for a filename
-  // and the use the workspace path as directory
-  const filePath = await RendererWorker.invoke('Prompt.prompt', title)
+  // When running in web, prompt for filename and combine with workspace path
+  const fileName = await RendererWorker.invoke('Prompt.prompt', title)
+  if (!fileName) {
+    return {
+      canceled: true,
+    }
+  }
+  const workspaceUri = await getWorkspaceUri()
+  const filePath = `${workspaceUri}/${fileName}`
   return {
-    canceled: !filePath,
+    canceled: false,
     filePath,
   }
 }
