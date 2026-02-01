@@ -10,9 +10,9 @@ export const clearSaveDialogMock = (): void => {
   saveDialogMockReturnValue = null
 }
 
-export const showSaveDialog = (title: string, properties: readonly string[]): Promise<any> => {
+export const showSaveDialog = async (title: string, properties: readonly string[]): Promise<any> => {
   if (saveDialogMockReturnValue !== null) {
-    return Promise.resolve(saveDialogMockReturnValue)
+    return saveDialogMockReturnValue
   }
   // TODO when running in web, maybe only make a prompt and ask for a filename
   // and the use the workspace path as directory
