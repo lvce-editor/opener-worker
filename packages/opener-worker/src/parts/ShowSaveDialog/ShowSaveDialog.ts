@@ -1,6 +1,7 @@
 import { PlatformType } from '@lvce-editor/constants'
 import { RendererWorker, SharedProcess } from '@lvce-editor/rpc-registry'
 import { getWorkspaceUri } from '../GetWorkspaceUri/GetWorkspaceUri.js'
+import { ShowSaveDialogResult } from './ShowSaveDialogResult.js'
 
 let saveDialogMockReturnValue: any = null
 
@@ -10,11 +11,6 @@ export const registerSaveDialogMock = (value: any): void => {
 
 export const clearSaveDialogMock = (): void => {
   saveDialogMockReturnValue = null
-}
-
-interface ShowSaveDialogResult {
-  readonly canceled: boolean
-  readonly filePath?: string
 }
 
 export const showSaveDialog = async (title: string, properties: readonly string[], platform: number): Promise<ShowSaveDialogResult> => {
