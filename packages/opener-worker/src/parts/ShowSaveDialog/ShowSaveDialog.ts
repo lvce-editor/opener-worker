@@ -1,7 +1,7 @@
 import { PlatformType } from '@lvce-editor/constants'
 import { RendererWorker, SharedProcess } from '@lvce-editor/rpc-registry'
-import { getWorkspaceUri } from '../GetWorkspaceUri/GetWorkspaceUri.js'
-import type { ShowSaveDialogResult } from './ShowSaveDialogResult.js'
+import type { ShowSaveDialogResult } from './ShowSaveDialogResult.ts'
+import { getWorkspaceUri } from '../GetWorkspaceUri/GetWorkspaceUri.ts'
 
 let saveDialogMockReturnValue: any = null
 
