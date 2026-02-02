@@ -3,9 +3,9 @@ import { RendererWorker, SharedProcess } from '@lvce-editor/rpc-registry'
 import type { ShowSaveDialogResult } from './ShowSaveDialogResult.ts'
 import { getWorkspaceUri } from '../GetWorkspaceUri/GetWorkspaceUri.ts'
 
-let saveDialogMockReturnValue: any = null
+let saveDialogMockReturnValue: ShowSaveDialogResult | null = null
 
-export const registerSaveDialogMock = (value: any): void => {
+export const registerSaveDialogMock = (value: ShowSaveDialogResult): void => {
   saveDialogMockReturnValue = value
 }
 
