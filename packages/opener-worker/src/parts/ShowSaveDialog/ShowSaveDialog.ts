@@ -20,7 +20,6 @@ export const showSaveDialog = async (title: string, properties: readonly string[
   if (platform === PlatformType.Electron) {
     return SharedProcess.invoke('ElectronDialog.showSaveDialog', title, properties)
   }
-  // When running in web, prompt for filename and combine with workspace path
   const fileName = await RendererWorker.invoke('Prompt.prompt', title)
   if (!fileName) {
     return {
