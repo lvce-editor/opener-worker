@@ -1,4 +1,5 @@
 import { handleMessagePort } from '../HandleMessagePort/HandleMessagePort.ts'
+import { initialize } from '../Initialize/Initialize.ts'
 import { openExternal, openUrl } from '../Open/Open.ts'
 import { enable, readOpenedMemory } from '../OpenerMemory/OpenerMemory.ts'
 import { showSaveDialog, registerSaveDialogMock, clearSaveDialogMock } from '../ShowSaveDialog/ShowSaveDialog.ts'
@@ -6,6 +7,7 @@ import { showSaveDialog, registerSaveDialogMock, clearSaveDialogMock } from '../
 export const commandMap = {
   'HandleMessagePort.handleMessagePort': handleMessagePort,
   'Open.enableMemoryOpener': enable,
+  'Open.initiaize': initialize,
   'Open.openExternal': openExternal,
   'Open.openUrl': openUrl,
   'Open.readOpenedUrl': readOpenedMemory,
