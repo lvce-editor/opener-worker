@@ -7,7 +7,7 @@ import { showSaveDialog, registerSaveDialogMock, clearSaveDialogMock } from '../
 export const commandMap = {
   'HandleMessagePort.handleMessagePort': handleMessagePort,
   'Open.enableMemoryOpener': enable,
-  'Open.initiaize': initialize,
+  'Open.initialize': initialize,
   'Open.openExternal': openExternal,
   'Open.openUrl': openUrl,
   'Open.readOpenedUrl': readOpenedMemory,
