@@ -3,19 +3,21 @@ import { RendererWorker, SharedProcess } from '@lvce-editor/rpc-registry'
 import type { ShowSaveDialogResult } from './ShowSaveDialogResult.ts'
 import { getWorkspaceUri } from '../GetWorkspaceUri/GetWorkspaceUri.ts'
 
-let saveDialogMockReturnValue: ShowSaveDialogResult | null = null
+const saveDialogMock = {
+  returnValue: null as ShowSaveDialogResult | null,
+}
 
 export const registerSaveDialogMock = (value: ShowSaveDialogResult): void => {
-  saveDialogMockReturnValue = value
+  saveDialogMock.returnValue = value
 }
 
 export const clearSaveDialogMock = (): void => {
-  saveDialogMockReturnValue = null
+  saveDialogMock.returnValue = null
 }
 
 export const showSaveDialog = async (title: string, properties: readonly string[], platform: number): Promise<ShowSaveDialogResult> => {
-  if (saveDialogMockReturnValue !== null) {
-    return saveDialogMockReturnValue
+  if (saveDialogMock.returnValue !== null) {
+    return saveDialogMock.returnValue
   }
   if (platform === PlatformType.Electron) {
     return SharedProcess.invoke('ElectronDialog.showSaveDialog', title, properties)
