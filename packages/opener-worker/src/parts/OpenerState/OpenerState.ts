@@ -1,18 +1,20 @@
-let enabled = false
-let text = ''
+const state = {
+  enabled: false,
+  text: '',
+}
 
 export const set = (value: boolean): void => {
-  enabled = value
+  state.enabled = value
 }
 
 export const get = (): boolean => {
-  return enabled
+  return state.enabled
 }
 
 export const writeUrl = (value: string): void => {
-  text = value
+  state.text = value
 }
 
 export const readUrl = (): string => {
-  return text
+  return state.text
 }
