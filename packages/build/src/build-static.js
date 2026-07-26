@@ -3,7 +3,7 @@ import { pathToFileURL } from 'node:url'
 import { root } from './root.js'
 import { cp } from 'node:fs/promises'
 
-const sharedProcessPath = join(root, 'packages', 'server', 'node_modules', '@lvce-editor', 'shared-process', 'index.js')
+const sharedProcessPath = join(root, 'node_modules', '@lvce-editor', 'shared-process', 'index.js')
 
 const sharedProcessUrl = pathToFileURL(sharedProcessPath).toString()
 
@@ -20,7 +20,7 @@ await cp(
   join(root, 'dist', commitHash, 'packages', 'opener-worker-worker', 'dist', 'openerWorkerMain.js'),
 )
 
-const nodeModulesPath = join(root, 'packages', 'server', 'node_modules')
+const nodeModulesPath = join(root, 'node_modules')
 
 // @ts-ignore
 const serverStaticPath = join(nodeModulesPath, '@lvce-editor', 'static-server', 'static')
