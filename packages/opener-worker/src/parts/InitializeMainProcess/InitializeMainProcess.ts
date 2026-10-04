@@ -6,10 +6,24 @@ const send = async (port: MessagePort): Promise<void> => {
   await RendererWorker.sendMessagePortToSharedProcess(port)
 }
 
-export const initializeMainProcess = async (): Promise<void> => {
-  const rpc = await TransferMessagePortRpcParent.create({
-    commandMap: CommandMap.commandMap,
-    send,
-  })
-  SharedProcess.set(rpc)
+const state = {
+  initialization: undefined as Promise<void> | undefined,
+}
+
+const createConnection = async (): Promise<void> => {
+  try {
+    const rpc = await TransferMessagePortRpcParent.create({
+      commandMap: CommandMap.commandMap,
+      send,
+    })
+    SharedProcess.set(rpc)
+  } catch (error) {
+    state.initialization = undefined
+    throw error
+  }
+}
+
+export const initializeMainProcess = (): Promise<void> => {
+  state.initialization ??= createConnection()
+  return state.initialization
 }
