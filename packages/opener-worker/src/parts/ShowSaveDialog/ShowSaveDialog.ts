@@ -2,6 +2,7 @@ import { PlatformType } from '@lvce-editor/constants'
 import { RendererWorker, SharedProcess } from '@lvce-editor/rpc-registry'
 import type { ShowSaveDialogResult } from './ShowSaveDialogResult.ts'
 import { getWorkspaceUri } from '../GetWorkspaceUri/GetWorkspaceUri.ts'
+import { initializeMainProcess } from '../InitializeMainProcess/InitializeMainProcess.ts'
 
 const saveDialogMock = {
   returnValue: null as ShowSaveDialogResult | null,
@@ -20,6 +21,7 @@ export const showSaveDialog = async (title: string, properties: readonly string[
     return saveDialogMock.returnValue
   }
   if (platform === PlatformType.Electron) {
+    await initializeMainProcess()
     return SharedProcess.invoke('ElectronDialog.showSaveDialog', title, properties)
   }
   const fileName = await RendererWorker.invoke('Prompt.prompt', title)
