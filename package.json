@@ -17,6 +17,11 @@
     "test": "npm test --workspaces --if-present",
     "type-check": "tsc -b"
   },
+  "overrides": {
+    "@lvce-editor/test-with-playwright-worker": {
+      "@playwright/test": "1.60.0"
+    }
+  },
   "prettier": {
     "semi": false,
     "singleQuote": true,
